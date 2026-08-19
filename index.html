@@ -478,6 +478,76 @@
     }
 
   </script>
+  <!-- ESCANEAR LAVARROPAS -->
+<section id="lavarropas" class="screen">
+  <h1>🧺 ESCANEAR LAVARROPAS</h1>
+
+  <p class="subtitle">
+    Sacale una foto al panel de tu lavarropas para que el GPS pueda analizarlo.
+  </p>
+
+  <div class="menu">
+
+    <button onclick="abrirCamaraLavarropas()">
+      📷 TOMAR FOTO
+    </button>
+
+    <button onclick="document.getElementById('fotoLavarropas').click()">
+      🖼️ ELEGIR FOTO
+    </button>
+
+    <input
+      type="file"
+      id="fotoLavarropas"
+      accept="image/*"
+      capture="environment"
+      style="display:none"
+      onchange="mostrarFotoLavarropas(this)"
+    >
+
+    <div id="resultadoLavarropas"></div>
+
+    <button onclick="mostrar('scanner')">
+      ⬅️ VOLVER
+    </button>
+
+  </div>
+</section>
+
+<script>
+function abrirCamaraLavarropas() {
+  document.getElementById('fotoLavarropas').click();
+}
+
+function mostrarFotoLavarropas(input) {
+  const resultado = document.getElementById('resultadoLavarropas');
+
+  if (!input.files || !input.files[0]) {
+    return;
+  }
+
+  const archivo = input.files[0];
+  const imagen = document.createElement('img');
+
+  imagen.src = URL.createObjectURL(archivo);
+  imagen.style.width = '100%';
+  imagen.style.maxWidth = '500px';
+  imagen.style.marginTop = '20px';
+  imagen.style.borderRadius = '15px';
+
+  resultado.innerHTML = `
+    <p style="font-weight:bold; margin-top:25px;">
+      🔎 FOTO RECIBIDA
+    </p>
+    <p>
+      El GPS ya tiene la imagen. Próximamente podremos analizar
+      la marca, los programas y los símbolos de tu lavarropas.
+    </p>
+  `;
+
+  resultado.appendChild(imagen);
+}
+</script>
 
 </body>
 </html>
