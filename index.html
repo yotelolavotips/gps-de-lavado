@@ -22,17 +22,35 @@
       margin: 0 auto;
       min-height: 100vh;
       padding: 30px 20px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    header {
       text-align: center;
+      margin: 25px 0 35px;
     }
 
     h1 {
-      margin-top: 30px;
       font-size: 32px;
+      margin: 0 0 12px;
+    }
+
+    h2 {
+      font-size: 25px;
+      margin: 0 0 25px;
+      text-align: center;
     }
 
     .subtitle {
-      margin-bottom: 35px;
       color: #666;
+      margin: 0;
     }
 
     .menu {
@@ -46,6 +64,7 @@
       border: none;
       border-radius: 14px;
       background: white;
+      color: #222;
       font-size: 18px;
       font-weight: bold;
       cursor: pointer;
@@ -55,6 +74,34 @@
     button:hover {
       transform: translateY(-1px);
     }
+
+    .back {
+      margin-top: 30px;
+      background: transparent;
+      box-shadow: none;
+      font-size: 15px;
+      color: #666;
+    }
+
+    .home {
+      background: transparent;
+      box-shadow: none;
+      font-size: 15px;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .stop {
+      text-align: left;
+    }
+
+    .stop span {
+      display: block;
+      font-size: 14px;
+      font-weight: normal;
+      color: #777;
+      margin-top: 5px;
+    }
   </style>
 </head>
 
@@ -62,21 +109,375 @@
 
   <main class="app">
 
-    <h1>🧭 GPS DE LAVADO</h1>
+    <!-- INICIO -->
+    <section id="inicio" class="screen active">
 
-    <p class="subtitle">¿Qué necesitás hacer?</p>
+      <header>
+        <h1>🧭 GPS DE LAVADO</h1>
+        <p class="subtitle">¿Qué necesitás hacer?</p>
+      </header>
 
-    <div class="menu">
+      <div class="menu">
 
-      <button>🚉 RECORRER EL GPS</button>
+        <button onclick="mostrar('paradas')">
+          🚉 RECORRER EL GPS
+        </button>
 
-      <button>📸 ESCÁNER GPS</button>
+        <button onclick="mostrar('escaner')">
+          📸 ESCÁNER GPS
+        </button>
 
-      <button>🔍 BUSCAR</button>
+        <button onclick="mostrar('buscar')">
+          🔍 BUSCAR
+        </button>
 
-    </div>
+      </div>
+
+    </section>
+
+
+    <!-- PARADAS -->
+    <section id="paradas" class="screen">
+
+      <header>
+        <h2>🚉 PARADAS</h2>
+      </header>
+
+      <div class="menu">
+
+        <button class="stop" onclick="mostrar('parada1')">
+          🚉 PARADA 1
+        </button>
+
+        <button class="stop" onclick="mostrar('parada2')">
+          🚉 PARADA 2
+        </button>
+
+        <button class="stop" onclick="mostrar('parada3')">
+          🚉 PARADA 3
+        </button>
+
+        <button class="stop" onclick="mostrar('parada4')">
+          🚉 PARADA 4
+        </button>
+
+        <button class="stop" onclick="mostrar('parada5')">
+          🚉 PARADA 5
+        </button>
+
+        <button class="stop" onclick="mostrar('parada6')">
+          🚉 PARADA 6
+        </button>
+
+        <button class="stop" onclick="mostrar('parada7')">
+          🚉 PARADA 7
+        </button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('inicio')">
+        ⬅️ Volver
+      </button>
+
+    </section>
+
+
+    <!-- PARADA 1 -->
+    <section id="parada1" class="screen">
+
+      <header>
+        <h2>🚉 PARADA 1</h2>
+      </header>
+
+      <div class="menu">
+
+        <button>🌍 OPCIÓN 1</button>
+        <button>🇺🇸 OPCIÓN 2</button>
+        <button>🌏 OPCIÓN 3</button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('paradas')">
+        ⬅️ Volver a Paradas
+      </button>
+
+    </section>
+
+
+    <!-- PARADA 2 -->
+    <section id="parada2" class="screen">
+
+      <header>
+        <h2>🚉 PARADA 2</h2>
+      </header>
+
+      <div class="menu">
+
+        <button>✋ REGLA DE LA MANO</button>
+        <button>⚖️ PESO</button>
+        <button>👕 EJEMPLOS</button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('paradas')">
+        ⬅️ Volver a Paradas
+      </button>
+
+    </section>
+
+
+    <!-- PARADA 3 -->
+    <section id="parada3" class="screen">
+
+      <header>
+        <h2>🚉 PARADA 3</h2>
+      </header>
+
+      <div class="menu">
+
+        <button>👕 ALGODÓN</button>
+        <button>👖 JEANS</button>
+        <button>♻️ ECO</button>
+        <button>➕ VER PROGRAMAS</button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('paradas')">
+        ⬅️ Volver a Paradas
+      </button>
+
+    </section>
+
+
+    <!-- PARADA 4 -->
+    <section id="parada4" class="screen">
+
+      <header>
+        <h2>🚉 PARADA 4</h2>
+      </header>
+
+      <div class="menu">
+
+        <button>🌡️ TEMPERATURA</button>
+        <button>🧪 CASOS PRÁCTICOS</button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('paradas')">
+        ⬅️ Volver a Paradas
+      </button>
+
+    </section>
+
+
+    <!-- PARADA 5 -->
+    <section id="parada5" class="screen">
+
+      <header>
+        <h2>🚉 PARADA 5</h2>
+      </header>
+
+      <div class="menu">
+
+        <button>🌀 RPM</button>
+        <button>🧪 CASOS PRÁCTICOS</button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('paradas')">
+        ⬅️ Volver a Paradas
+      </button>
+
+    </section>
+
+
+    <!-- PARADA 6 -->
+    <section id="parada6" class="screen">
+
+      <header>
+        <h2>🚉 PARADA 6</h2>
+      </header>
+
+      <div class="menu">
+
+        <button>🧼 JABÓN</button>
+        <button>🧴 SUAVIZANTE</button>
+        <button>🟤 QUITAMANCHAS</button>
+        <button>⚪ PERCARBONATO</button>
+        <button>🧂 BICARBONATO</button>
+        <button>🧴 LAVANDINA</button>
+        <button>🫧 VINAGRE</button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('paradas')">
+        ⬅️ Volver a Paradas
+      </button>
+
+    </section>
+
+
+    <!-- PARADA 7 -->
+    <section id="parada7" class="screen">
+
+      <header>
+        <h2>🚉 PARADA 7</h2>
+      </header>
+
+      <div class="menu">
+
+        <button>⏰ INICIO DIFERIDO</button>
+        <button>🧺 FRESHCARE</button>
+        <button>💨 VAPOR</button>
+        <button>💧 ENJUAGUE EXTRA</button>
+        <button>🫧 PRELAVADO</button>
+        <button>💪 LAVADO INTENSIVO</button>
+        <button>🔒 BLOQUEO INFANTIL</button>
+        <button>🌡️ TEMPERATURA</button>
+        <button>🌀 RPM</button>
+        <button>📱 WIFI</button>
+        <button>🌙 CICLO NOCHE</button>
+        <button>🧴 HIGIENIZANTE</button>
+        <button>⚡ LAVADO RÁPIDO</button>
+        <button>🧼 NIVEL DE SUCIEDAD</button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('paradas')">
+        ⬅️ Volver a Paradas
+      </button>
+
+    </section>
+
+
+    <!-- ESCÁNER -->
+    <section id="escaner" class="screen">
+
+      <header>
+        <h2>📸 ESCÁNER GPS</h2>
+      </header>
+
+      <div class="menu">
+
+        <button onclick="mostrar('ropa')">
+          👕 ESCANEAR ROPA
+        </button>
+
+        <button onclick="mostrar('mancha')">
+          🟤 ESCANEAR MANCHA
+        </button>
+
+        <button onclick="mostrar('etiqueta')">
+          🏷️ ESCANEAR ETIQUETA
+        </button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('inicio')">
+        ⬅️ Volver
+      </button>
+
+    </section>
+
+
+    <!-- ESCANEAR ROPA -->
+    <section id="ropa" class="screen">
+
+      <header>
+        <h2>👕 ESCANEAR ROPA</h2>
+      </header>
+
+      <div class="menu">
+
+        <button>📷 ESCANEAR ROPA</button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('escaner')">
+        ⬅️ Volver al Escáner
+      </button>
+
+    </section>
+
+
+    <!-- ESCANEAR MANCHA -->
+    <section id="mancha" class="screen">
+
+      <header>
+        <h2>🟤 ESCANEAR MANCHA</h2>
+      </header>
+
+      <div class="menu">
+
+        <button>📷 ESCANEAR MANCHA</button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('escaner')">
+        ⬅️ Volver al Escáner
+      </button>
+
+    </section>
+
+
+    <!-- ESCANEAR ETIQUETA -->
+    <section id="etiqueta" class="screen">
+
+      <header>
+        <h2>🏷️ ESCANEAR ETIQUETA</h2>
+      </header>
+
+      <div class="menu">
+
+        <button>📷 ESCANEAR ETIQUETA</button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('escaner')">
+        ⬅️ Volver al Escáner
+      </button>
+
+    </section>
+
+
+    <!-- BUSCAR -->
+    <section id="buscar" class="screen">
+
+      <header>
+        <h2>🔍 BUSCAR</h2>
+      </header>
+
+      <div class="menu">
+
+        <button>🔎 BUSCAR</button>
+
+      </div>
+
+      <button class="back" onclick="mostrar('inicio')">
+        ⬅️ Volver
+      </button>
+
+    </section>
 
   </main>
+
+
+  <script>
+
+    function mostrar(pantalla) {
+
+      const pantallas = document.querySelectorAll('.screen');
+
+      pantallas.forEach(function(elemento) {
+        elemento.classList.remove('active');
+      });
+
+      document.getElementById(pantalla).classList.add('active');
+
+      window.scrollTo(0, 0);
+    }
+
+  </script>
 
 </body>
 </html>
