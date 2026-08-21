@@ -458,35 +458,6 @@
     
 
     </section>
-
-  </main>
-
-
-  <script>
-
-    function buscarModelo() {
-    const modelo = prompt("Escribí la marca y modelo de tu lavarropas:");
-
-    if (!modelo) {
-        return;
-    }
-
-    alert("Buscando información para: " + modelo);
-}
-    function mostrar(pantalla) {
-
-      const pantallas = document.querySelectorAll('.screen');
-
-      pantallas.forEach(function(elemento) {
-        elemento.classList.remove('active');
-      });
-
-      document.getElementById(pantalla).classList.add('active');
-
-      window.scrollTo(0, 0);
-    }
-
-  </script>
 <!-- ESCANEAR LAVARROPAS -->
 <section id="lavarropas" class="screen">
 
@@ -525,6 +496,36 @@
 
   </div>
 </section>
+    
+  </main>
+
+
+  <script>
+
+    function buscarModelo() {
+    const modelo = prompt("Escribí la marca y modelo de tu lavarropas:");
+
+    if (!modelo) {
+        return;
+    }
+
+    alert("Buscando información para: " + modelo);
+}
+    function mostrar(pantalla) {
+
+      const pantallas = document.querySelectorAll('.screen');
+
+      pantallas.forEach(function(elemento) {
+        elemento.classList.remove('active');
+      });
+
+      document.getElementById(pantalla).classList.add('active');
+
+      window.scrollTo(0, 0);
+    }
+
+  </script>
+
 
 <script>
 function abrirCamaraLavarropas() {
