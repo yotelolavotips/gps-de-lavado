@@ -451,13 +451,11 @@
 
       <div class="menu">
 
-        <button>🔎 BUSCAR</button>
+        <button onclick="buscarModelo()">🔎 BUSCAR LAVARROPAS</button>
 
       </div>
 
-      <button class="back" onclick="mostrar('inicio')">
-        ⬅️ Volver
-      </button>
+    
 
     </section>
 
@@ -466,6 +464,15 @@
 
   <script>
 
+    function buscarModelo() {
+    const modelo = prompt("Escribí la marca y modelo de tu lavarropas:");
+
+    if (!modelo) {
+        return;
+    }
+
+    alert("Buscando información para: " + modelo);
+}
     function mostrar(pantalla) {
 
       const pantallas = document.querySelectorAll('.screen');
