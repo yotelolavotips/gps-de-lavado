@@ -532,7 +532,8 @@ function abrirCamaraLavarropas() {
   document.getElementById('fotoLavarropas').click();
 }
 
-function mostrarFotoLavarropas(input) {
+async function mostrarFotoLavarropas(input) {
+
   const resultado = document.getElementById('resultadoLavarropas');
 
   if (!input.files || !input.files[0]) {
@@ -540,25 +541,78 @@ function mostrarFotoLavarropas(input) {
   }
 
   const archivo = input.files[0];
-  const imagen = document.createElement('img');
-
-  imagen.src = URL.createObjectURL(archivo);
-  imagen.style.width = '100%';
-  imagen.style.maxWidth = '500px';
-  imagen.style.marginTop = '20px';
-  imagen.style.borderRadius = '15px';
 
   resultado.innerHTML = `
     <p style="font-weight:bold; margin-top:25px;">
-      🔎 FOTO RECIBIDA
+      🔎 ANALIZANDO LAVARROPAS...
     </p>
     <p>
-      El GPS ya tiene la imagen. Próximamente podremos analizar
-      la marca, los programas y los símbolos de tu lavarropas.
+      El GPS está enviando la foto a la IA. Esperá unos segundos.
     </p>
   `;
 
-  resultado.appendChild(imagen);
+  const lector = new FileReader();
+
+  lector.onload = async function() {
+
+    try {
+
+      const base64 = lector.result.split(',')[1];
+
+      const respuesta = await fetch(
+        'https://script.google.com/macros/s/AKfycby7wqW_i0rU_ybjABtjcETnaSNxDv9xnfzVMOPTnCURgQKxaeObTWY7FMu5fAEwkZH6XQ/exec',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify({
+            image: base64,
+            mimeType: archivo.type
+          })
+        }
+      );
+
+      const datos = await respuesta.json();
+
+      if (!datos.ok) {
+        throw new Error(datos.error || 'La IA no pudo analizar la imagen.');
+      }
+
+      resultado.innerHTML = `
+        <p style="font-weight:bold; margin-top:25px;">
+          🤖 ANÁLISIS DEL GPS
+        </p>
+
+        <div style="
+          background:white;
+          padding:20px;
+          border-radius:15px;
+          margin-top:15px;
+          text-align:left;
+          line-height:1.5;
+        ">
+          ${datos.resultado}
+        </div>
+      `;
+
+    } catch (error) {
+
+      resultado.innerHTML = `
+        <p style="font-weight:bold; margin-top:25px;">
+          ⚠️ NO SE PUDO ANALIZAR
+        </p>
+
+        <p>
+          ${error.message}
+        </p>
+      `;
+
+    }
+
+  };
+
+  lector.readAsDataURL(archivo);
 }
 </script>
 
